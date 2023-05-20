@@ -1,10 +1,15 @@
+@font-face {
+  font-family: "The RiskeysDemo";
+  src: url(assets/fonts/The_RiskeysDemo.otf);
+}
+
 body {
   background-image: url('/assets/bg-2.jpeg');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  background-color: #f0f0f0;
 }
 
 .bg-image {
+  min-height: 100vh;
 }

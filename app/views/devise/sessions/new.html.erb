@@ -4,12 +4,12 @@
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
     <div class="field">
       <%= f.label :phone, class: "text-white" %><br />
-      <%= f.text_field :phone, class: "rounded", autofocus: true %>
+      <%= f.text_field :phone, class: "rounded", style: "width: 300px;", autofocus: true %>
     </div>
 
     <div class="field">
       <%= f.label :password, class: "text-white" %><br />
-      <%= f.password_field :password, class: "rounded", autocomplete: "current-password" %>
+      <%= f.password_field :password, class: "rounded", style: "width: 300px;", autocomplete: "current-password" %>
     </div>
 
     <% if devise_mapping.rememberable? %>

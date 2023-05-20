@@ -5,6 +5,8 @@ ruby "3.1.3"
 
 gem "rails", "~> 7.0.4", ">= 7.0.4.3"
 
+gem 'sassc-rails'
+
 gem "sprockets-rails"
 
 gem "pg", "~> 1.1"

@@ -1,16 +1,13 @@
 <div class="max-w-5xl mx-auto text-center">
-  <% @doctors.each do |doctor| %>
+  <% @category.doctors.each do |doctor| %>
     <div class="flex justify-center">
       <div class="flex flex-col md:flex-row md:max-w-xl rounded-lg bg-white shadow-lg">
         <img src="https://naked-science.ru/wp-content/uploads/2016/04/article_entweeklyhires02.jpg" width="500" alt="" />
-        <div class="p-6 flex flex-col justify-start">
+        <div>
           <h3><%= doctor.category.name %></h3>
           <h4><%= doctor.first_name %> <%= doctor.last_name %></h4>
-          <% if doctor.appointments.count >= 10 %>
-            <%= button_to 'Немає місць', '#', disabled: true, class: 'disabled-button' %> <br>
-          <% else %>
-            <%= button_to 'Make an appointment', appointments_path(doctor_id: doctor.id, user_id: current_user.id) %>
-          <% end %>
+          <%= button_to 'Make an appointment'%> <br>
+        </div>
       </div>
     </div>
   <% end %>

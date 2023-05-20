@@ -1,10 +1,10 @@
 class Doctor < ApplicationRecord
-  has_many :appointments
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :validatable
   has_many :users, through: :appointments
-  validates :specialty, presence: true, if: -> { doctor? }
-  devise :database_authenticatable, :validatable
-
-  def doctor?
-    role == 'doctor'
-  end
+  has_many :appointments
+  belongs_to :category, dependent: :destroy
+  scope :ordered, -> { order(category_id: :desc) }
 end
