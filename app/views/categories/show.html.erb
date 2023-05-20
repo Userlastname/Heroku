@@ -1,0 +1,14 @@
+<div class="max-w-5xl mx-auto text-center">
+  <% @category.doctors.each do |doctor| %>
+    <div class="flex justify-center">
+      <div class="flex flex-col md:flex-row md:max-w-xl rounded-lg bg-white shadow-lg">
+        <img src="https://naked-science.ru/wp-content/uploads/2016/04/article_entweeklyhires02.jpg" width="500" alt="" />
+        <div>
+          <h3><%= doctor.category.name %></h3>
+          <h4><%= doctor.first_name %> <%= doctor.last_name %></h4>
+          <%= button_to 'Make an appointment'%> <br>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
