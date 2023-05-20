@@ -17,8 +17,6 @@ gem "turbo-rails"
 
 gem "stimulus-rails"
 
-gem "cssbundling-rails"
-
 gem "jbuilder"
 
 gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
@@ -31,7 +29,9 @@ gem 'nio4r', '~> 2.5', '>= 2.5.9'
 
 gem 'byebug', '~> 11.1', '>= 11.1.3'
 
-gem 'devise', '~> 4.9', '>= 4.9.2'
+gem 'devise'
+
+gem 'cancancan'
 
 gem 'factory_bot_rails', '~> 6.2'
 
@@ -43,6 +43,7 @@ gem 'cloudinary', '~> 1.25'
 
 group :development, :test do
   gem 'debug', '~> 1.8', platforms: %i[ mri mingw x64_mingw ]
+  gem "rspec-rails"
 end
 
 group :development do
