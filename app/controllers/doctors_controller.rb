@@ -10,7 +10,7 @@ class DoctorsController < ApplicationController
   def update_recommendation
     @appointment = Appointment.find(params[:appointment_id])
     @appointment.update(recommendation: params[:recommendation])
-    flash[:success] = 'Рекомендацію додано успішно.'
+    flash[:success] = 'Recommendation added successfully'
     redirect_to request.referer
   end
 

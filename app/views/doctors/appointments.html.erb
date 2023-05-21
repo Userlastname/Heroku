@@ -5,10 +5,11 @@
     <li class="list-group-item">
     Patient
     <%= appointment.user.first_name %> <%= appointment.user.last_name %> <br>
-    Recommendation: <br> <%= appointment.recommendation %>
+    <%= appointment.recommendation %>
       <% if appointment.recommendation.blank? %>
         <%= form_with(url: update_recommendation_doctor_path(current_doctor), method: :patch) do |f| %>
           <%= f.hidden_field :appointment_id, value: appointment.id %>
+          <%= f.label :recommendation %>:
           <%= f.text_area :recommendation, rows: 6, cols: 40 %>
           <%= f.submit "Add Recommendation" %>
         <% end %>

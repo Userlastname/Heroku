@@ -4,8 +4,10 @@ class Doctor < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+  has_many :appointments, dependent: :destroy
   has_many :users, through: :appointments
-  has_many :appointments
-  belongs_to :category, dependent: :destroy
-  scope :ordered, -> { order(category_id: :desc) }
+  belongs_to :category
+  validates :phone, presence: true, uniqueness: true
+  validates :phone, format: { with: /\A\d{10}\z/, message: "should be a 10-digit number" }
+  scope :ordered, -> { order(:first_name) }
 end
