@@ -1,26 +1,25 @@
 <div class="container" style="width: 500px;">
-
   <ol class="list-group list-group-numbered text-center">
-  <% @appointments.each do |appointment| %>
-    <li class="list-group-item">
-    Patient
-    <%= appointment.user.first_name %> <%= appointment.user.last_name %> <br>
-    <%= appointment.recommendation %>
-      <% if appointment.recommendation.blank? %>
-        <%= form_with(url: update_recommendation_doctor_path(current_doctor), method: :patch) do |f| %>
-          <%= f.hidden_field :appointment_id, value: appointment.id %>
-          <%= f.label :recommendation %>:
-          <%= f.text_area :recommendation, rows: 6, cols: 40 %>
-          <%= f.submit "Add Recommendation" %>
-        <% end %>
-        Date&Time: <%= appointment.appointment_time %>
-      <% end %> <br>
-    </li>
-  <% end %>
-  <% if flash[:success] %>
-  <div class="alert alert-success">
-    <%= flash[:success] %>
-  </div>
+    <% @appointments.each do |appointment| %>
+      <li class="list-group-item">
+        Patient:
+        <%= appointment.user.first_name %> <%= appointment.user.last_name %> <br>
+        <%= appointment.recommendation %>
+        <% if appointment.recommendation.blank? %>
+          <%= form_with(url: update_recommendation_doctor_path(current_doctor), method: :patch) do |f| %>
+            <%= f.hidden_field :appointment_id, value: appointment.id %>
+            <%= f.label :recommendation %>:
+            <%= f.text_area :recommendation, rows: 6, cols: 40 %>
+            <%= f.submit "Add Recommendation", class: "btn btn-primary" %>
+          <% end %>
+          Date&Time: <%= appointment.appointment_time %>
+        <% end %> <br>
+      </li>
+    <% end %>
+    <% if flash[:success] %>
+      <div class="alert alert-success">
+        <%= flash[:success] %>
+      </div>
+    <% end %>
   </ol>
-<% end %>
 </div>

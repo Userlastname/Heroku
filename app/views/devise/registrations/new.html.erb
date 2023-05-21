@@ -1,4 +1,5 @@
 <center>
+  <br><br><br>
   <h2 class="text-white">Sign up</h2>
 
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
@@ -20,7 +21,7 @@
     <div class="field">
       <%= f.label :password, class: "text-white"  %>
       <% if @minimum_password_length %>
-      <em class="text-white">(<%= @minimum_password_length %> characters minimum)</em>
+        <em class="text-white">(<%= @minimum_password_length %> characters minimum)</em>
       <% end %><br />
       <%= f.password_field :password, class: "rounded", style: "width: 300px;", autocomplete: "new-password" %>
     </div>
@@ -31,10 +32,9 @@
     </div>
 
     <div class="actions">
-      <%= f.submit "Sign up" %>
+      <%= f.submit "Sign up", class: "btn btn-primary" %>
     </div>
   <% end %>
-<%= link_to new_user_session_path do %>
-  <button> Log in</button>
-<% end %>
+
+  <%= link_to 'Log in', new_user_session_path, class: "btn btn-warning"%><br><br><br><br><br>
 </center>
