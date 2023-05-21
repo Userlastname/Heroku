@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_20_105329) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_21_061920) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -21,7 +21,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_20_105329) do
     t.bigint "resource_id"
     t.string "author_type"
     t.bigint "author_id"
-    t.dateteime "created_at", null: false
+    t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["author_type", "author_id"], name: "index_active_admin_comments_on_author"
     t.index ["namespace"], name: "index_active_admin_comments_on_namespace"
@@ -46,6 +46,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_20_105329) do
     t.text "recommendation"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "appointment_time"
     t.index ["doctor_id"], name: "index_appointments_on_doctor_id"
     t.index ["user_id"], name: "index_appointments_on_user_id"
   end

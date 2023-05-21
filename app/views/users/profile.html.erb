@@ -2,11 +2,12 @@
   <ol class="list-group list-group-numbered text-center">
     <% @appointments.each do |appointment| %>
       <li class="list-group-item">
-        <%= appointment.doctor.category.name %> <%= appointment.doctor.last_name %>
+        <%= appointment.doctor.category.name %> <%= appointment.doctor.last_name %> <br>
         <% if appointment.recommendation.present? %>
           Recommendation: <%= appointment.recommendation %>
         <% else %>
           <p>Not yet..</p>
+          Date&Time: <%= appointment.appointment_time %>
         <% end %>
       </li>
     <% end %>

@@ -11,7 +11,6 @@ ActiveAdmin.register User do
     column :first_name
     column :last_name
     column :phone
-    column :email
     column :created_at
     actions
   end

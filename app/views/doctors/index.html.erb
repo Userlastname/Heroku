@@ -1,18 +1,51 @@
 <div class="max-w-5xl mx-auto text-center">
+  <% if flash[:success] %>
+  <div class="alert alert-success">
+    <%= flash[:success] %>
+  </div>
+  <% end %>
   <% @doctors.each do |doctor| %>
     <div class="flex justify-center">
       <div class="flex flex-col md:flex-row md:max-w-xl rounded-lg bg-white shadow-lg">
-        <img src="https://naked-science.ru/wp-content/uploads/2016/04/article_entweeklyhires02.jpg" width="500" alt="" />
+      <% if doctor.category.name == "Neurologist" %>
+        <%= image_tag 'GregoryHouse4'%>
+        <% elsif doctor.category.name == "Surgeon" %>
+        <%= image_tag 'RobertChase'%>
+        <% elsif doctor.category.name == "Nephrologist" %>
+        <%= image_tag 'EricForeman6'%>
+        <% elsif doctor.category.name == "Endocrinologist" %>
+        <%= image_tag 'LisaEdelstein2'%>
+        <% elsif doctor.category.name == "Oncologist" %>
+        <%= image_tag 'JamesWilsonOncology5'%>
+        <% elsif doctor.category.name == "Immunologist" %>
+        <%= image_tag 'AllisonCameron7'%>
+        <% elsif doctor.category.name == "Therapist" %>
+        <%= image_tag 'RemyHadley'%>
+        <% end %>
         <div class="p-6 flex flex-col justify-start">
           <h3><%= doctor.category.name %></h3>
           <h4><%= doctor.first_name %> <%= doctor.last_name %></h4>
           <% if doctor.appointments.opened.count >= Doctor::MAX_APPOINTMENT_COUNT %>
             <%= button_to 'Немає місць', '#', disabled: true, class: 'disabled-button' %> <br>
           <% else %>
+          <% if doctor_signed_in? %>
+            <button>Appointment not available</button>
+          <% end %>
             <% unless doctor_signed_in? %>
-              <%= button_to 'Make an appointment', appointments_path(doctor_id: doctor.id, user_id: current_user.id) %>
+              <%= form_tag appointments_path, method: :post do %>
+                <%= hidden_field_tag :doctor_id, doctor.id %>
+                <%= hidden_field_tag :user_id, current_user.id %>
+                <%= label_tag :appointment_time, 'Appointment Time:' %>
+                <% if appointment_already_exists?(doctor.id, params[:appointment_time]) %>
+                  <p>Appointment time is not available.</p>
+                <% else %>
+                  <%= select_tag :appointment_time, appointment_time_options(doctor.id) %>
+                  <%= submit_tag 'Make an appointment' %>
+                <% end %>
+              <% end %>
             <% end %>
           <% end %>
+        </div>
       </div>
     </div>
   <% end %>

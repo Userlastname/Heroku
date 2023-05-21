@@ -1,13 +1,14 @@
 <header class="p-3 bg-dark text-white">
     <div class="container">
       <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+      <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64"><path fill="currentColor" d="M56.609 1.114s-48.788-.015-48.774 0C3.338 1.114.81 3.439.81 8.188v48.966c0 4.443 2.273 6.769 6.766 6.769h49.173c4.493 0 6.769-2.21 6.769-6.769V8.188c.001-4.634-2.275-7.074-6.909-7.074zm-8.343 52.518h-8.302v-17.82H24.469v17.82h-8.301V13.896h8.301v15.053h15.495V13.896h8.302v39.736z"/></svg>
         <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
           <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"></use></svg>
         </a>
 
         <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
           <% if doctor_signed_in? %>
-            <li><h3><%= link_to "Appointments", appointments_doctor_path(current_doctor.id) %></h3></li>
+            <li><h3><%= link_to "Appointments", appointments_doctor_path(current_doctor.id), class: "text-white text-decoration-none" %></h3></li>
           <% else %>
             <li><h3><%= link_to "Doctors|", doctors_path, class: "text-white text-decoration-none" %></h3></li>
             <li><h3><%= link_to "Categories", categories_path, class: "text-white text-decoration-none" %></h3></li>
@@ -19,11 +20,11 @@
 
         <div class="text-end">
         <% if doctor_signed_in? %>
-          <%= button_to "Exit", destroy_doctor_session_path, method: :delete, form: {turbolink: false}, class: "btn btn-outline-light me-2" %>
           <p>Welcome, doctor <%= current_doctor.first_name %></p>
+          <%= button_to "Exit", destroy_doctor_session_path, method: :delete, form: {turbolink: false}, class: "btn btn-outline-light me-2" %>
         <% elsif user_signed_in? %>
-          <%= button_to "Log out", destroy_user_session_path, method: :delete, form: {turbolink: false}, class: "btn btn-outline-light me-2" %>
           <p>Welcome, patient <%= current_user.first_name %></p>
+          <%= button_to "Log out", destroy_user_session_path, method: :delete, form: {turbolink: false}, class: "btn btn-outline-light me-2" %>
         <% else %>
           <%= link_to new_user_registration_path do %>
             <svg xmlns="http://www.w3.org/2000/svg" width="56" style="fill: red;" height="56" viewBox="0 0 24 24"><path fill="currentColor" d="M12 10c2.21 0 4-1.79 4-4s-1.79-4-4-4s-4 1.79-4 4s1.79 4 4 4m0-6c1.1 0 2 .9 2 2s-.9 2-2 2s-2-.9-2-2s.9-2 2-2m6.39 8.56C16.71 11.7 14.53 11 12 11s-4.71.7-6.39 1.56A2.97 2.97 0 0 0 4 15.22V22h2v-6.78c0-.38.2-.72.5-.88C7.71 13.73 9.63 13 12 13c.76 0 1.47.07 2.13.2l-1.55 3.3H9.75C8.23 16.5 7 17.73 7 19.25S8.23 22 9.75 22H18c1.1 0 2-.9 2-2v-4.78c0-1.12-.61-2.15-1.61-2.66M10.94 20H9.75c-.41 0-.75-.34-.75-.75s.34-.75.75-.75h1.89l-.7 1.5M18 20h-4.85l2.94-6.27c.54.2 1.01.41 1.41.61c.3.16.5.5.5.88V20Z"/></svg>
