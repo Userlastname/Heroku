@@ -1,16 +1,17 @@
-<div class="container" style="width: 300px;",>
+<div class="container" style="width: 500px;">
   <ol class="list-group list-group-numbered text-center">
   <% @appointments.each do |appointment| %>
     <li class="list-group-item">
     <%= appointment.user.first_name %> <%= appointment.user.last_name %> - <%= appointment.recommendation %>
-      <% if !appointment.closed %>
-        <%= form_with(url: doctor_update_recommendation_path(@doctor), method: :patch) do |f| %>
+      <% if appointment.recommendation.blank? %>
+        <%= form_with(url: update_recommendation_doctor_path(current_doctor), method: :patch) do |f| %>
           <%= f.hidden_field :appointment_id, value: appointment.id %>
-          <%= f.text_field :recommendation, placeholder: 'Enter recommendation' %>
-          <%= f.submit 'Add Recommendation' %>
+          <%= f.label :recommendation %>
+          <%= f.text_area :recommendation %>
+          <%= f.submit "Add Recommendation" %>
         <% end %>
       <% end %>
     </li>
   <% end %>
-</ol>
+  </ol>
 </div>

@@ -1,0 +1,14 @@
+<div class="container" style="width: 500px;">
+  <ol class="list-group list-group-numbered text-center">
+    <% @appointments.each do |appointment| %>
+      <li class="list-group-item">
+        <%= appointment.doctor.category.name %> <%= appointment.doctor.last_name %>
+        <% if appointment.recommendation.present? %>
+          Recommendation: <%= appointment.recommendation %>
+        <% else %>
+          <p>Not yet..</p>
+        <% end %>
+      </li>
+    <% end %>
+  </ol>
+</div>

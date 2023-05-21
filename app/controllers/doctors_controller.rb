@@ -8,18 +8,10 @@ class DoctorsController < ApplicationController
   end
 
   def update_recommendation
-    @appointment = current_doctor.appointments.find(params[:appointment_id])
-    @appointment.recommendation = params[:recommendation]
-    @appointment.closed = true
-
-    if @appointment.save
-      redirect_to doctor_appointments_path, notice: 'Recommendation added and appointment closed.'
-    else
-      redirect_to doctor_appointments_path, alert: 'Failed to update recommendation.'
-    end
+    @appointment = Appointment.find(params[:appointment_id])
+    @appointment.update(recommendation: params[:recommendation])
+    redirect_to root_path
   end
-
-
 
   def appointments
     @doctor = current_doctor # Assuming the doctor is logged in and stored in the current_user variable

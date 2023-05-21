@@ -19,4 +19,8 @@ class AppointmentsController < ApplicationController
   def appointment_params
     params.permit(:doctor_id, :user_id, :recommendation)
   end
+
+  def appointment_time_options
+    ['8:00', '9:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00']
+  end
 end
