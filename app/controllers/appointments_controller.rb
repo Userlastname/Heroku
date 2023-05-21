@@ -9,7 +9,7 @@ class AppointmentsController < ApplicationController
     @appointment = Appointment.new(appointment_params)
     if @appointment.save
       flash[:success] = 'An appointment with the doctor was made successfully'
-      redirect_to request.referer
+      redirect_to new_user_session_path
     else
       render :new
     end

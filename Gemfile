@@ -40,7 +40,7 @@ gem 'factory_bot_rails', '~> 6.2'
 gem 'faker', '~> 3.2'
 
 gem 'activeadmin', '~> 2.13', '>= 2.13.1'
-
+gem 'bootstrap-sass'
 gem 'cloudinary', '~> 1.25'
 
 group :development, :test do
@@ -54,6 +54,7 @@ end
 
 group :test do
   gem "capybara"
+  gem 'shoulda-matchers', require: false
   gem "selenium-webdriver"
   gem "webdrivers"
 end
