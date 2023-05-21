@@ -6,10 +6,12 @@
         <div class="p-6 flex flex-col justify-start">
           <h3><%= doctor.category.name %></h3>
           <h4><%= doctor.first_name %> <%= doctor.last_name %></h4>
-          <% if doctor.appointments.count >= 10 %>
+          <% if doctor.appointments.opened.count >= Doctor::MAX_APPOINTMENT_COUNT %>
             <%= button_to 'Немає місць', '#', disabled: true, class: 'disabled-button' %> <br>
           <% else %>
-            <%= button_to 'Make an appointment', appointments_path(doctor_id: doctor.id, user_id: current_user.id) %>
+            <% unless doctor_signed_in? %>
+              <%= button_to 'Make an appointment', appointments_path(doctor_id: doctor.id, user_id: current_user.id) %>
+            <% end %>
           <% end %>
       </div>
     </div>

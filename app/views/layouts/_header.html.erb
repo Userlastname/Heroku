@@ -11,7 +11,9 @@
           <% else %>
             <li><h3><%= link_to "Doctors|", doctors_path, class: "text-white text-decoration-none" %></h3></li>
             <li><h3><%= link_to "Categories", categories_path, class: "text-white text-decoration-none" %></h3></li>
-
+            <% if user_signed_in? %>
+              <li><h3><%= link_to "|Recommendations", appointments_user_path(id: current_user.id), class: "text-white text-decoration-none" %></h3></li>
+            <% end %>
           <% end %>
         </ul>
 
