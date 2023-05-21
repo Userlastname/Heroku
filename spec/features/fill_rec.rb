@@ -22,6 +22,7 @@ RSpec.feature "Doctor login and leave recommendation", type: :feature, js: true 
     }
 
     appointment = FactoryBot.create(:appointment, appointment_params)
+
     visit "/doctors/#{doctor.id}/appointments"
 
     fill_in "Recommendation", with: "System test recommendation"

@@ -34,8 +34,4 @@ module AppointmentsHelper
     selected_appointment_times
   end
 
-  def appointment_already_exists?(doctor_id, appointment_time)
-    selected_appointment_times = doctor_selected_appointment_times(doctor_id)
-    selected_appointment_times.include?(appointment_time)
-  end
 end
