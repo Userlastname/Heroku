@@ -1,2 +1,0 @@
-[build]
-  environment = { PG_gem= "0.21.0" }
