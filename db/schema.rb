@@ -68,7 +68,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_21_061920) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "email"
     t.index ["category_id"], name: "index_doctors_on_category_id"
     t.index ["phone"], name: "index_doctors_on_phone", unique: true
     t.index ["reset_password_token"], name: "index_doctors_on_reset_password_token", unique: true
