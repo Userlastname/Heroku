@@ -1,5 +1,5 @@
  /* @import "users";
  @import "categories";
  @import "doctors";
- @import "appointments";
- @import 'custom'; */
+ @import "appointments"; */
+ @import 'custom.css';
