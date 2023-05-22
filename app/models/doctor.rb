@@ -7,6 +7,7 @@ class Doctor < ApplicationRecord
   has_many :appointments, dependent: :destroy
   has_many :users, through: :appointments
   belongs_to :category
+  validates :email, presence: true, uniqueness: true
   validates :phone, presence: true, uniqueness: true
   validates :phone, format: { with: /\A\d{10}\z/, message: "should be a 10-digit number" }
 
