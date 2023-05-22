@@ -21,7 +21,7 @@
           <p>Welcome, doctor <%= current_doctor.first_name %></p>
           <%= button_to "Exit", destroy_doctor_session_path, method: :delete, form: {turbolink: false}, class: "btn btn-outline-light me-2" %>
         <% elsif user_signed_in? %>
-          <p>Welcome, patient <%= current_user.first_name %></p>
+          <p>Welcome, pppatient <%= current_user.first_name %></p>
           <%= button_to "Log out", destroy_user_session_path, method: :delete, form: {turbolink: false}, class: "btn btn-outline-light me-2" %>
         <% else %>
           <%= link_to new_user_registration_path do %>
